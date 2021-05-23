@@ -26,7 +26,7 @@ def get_song_page_url(query='boss bitch'):
     response = requests.get('https://en.muzmo.org/search', params=params)
 
     while 'Your search request is being processed' in response.text:
-        response = requests.get('https://en.muzmo.org/search', headers=headers, params=params, cookies=cookies)
+        response = requests.get('https://en.muzmo.org/search', params=params)
 
     soup = BeautifulSoup(response.text, 'lxml')
     log(soup.get_text())
