@@ -1,9 +1,4 @@
 import sys
-
-if __name__ == "__main__":
-    print("Bro not main")
-    sys.exit()
-
 import tkinter as tk
 import os, time
 
@@ -16,62 +11,25 @@ from PIL import ImageFont, ImageDraw
 
 root = tk.Tk()
 
-##image = Image.open('favicon.ico')
-##photo = ImageTk.PhotoImage(image)
-
 icon = ImageTk.PhotoImage(master=root, file='utils/favicon.ico')
 root.wm_iconphoto(True, icon)
 
-##root.wm_iconbitmap('favicon.ico')
-
 root.title("Assistant")
 
-##root.attributes('-fullscreen', True)
-##root.state('iconic')
-##root.state('withdrawn')
-##root.resizable(0,0)
-##root.state('normal')
-##pad=0
-####root.attributes('-type', 'dock')
-##
-##
-##try:                                   # Automatic zoom if possible
-##    root.wm_state("zoomed")
-##    print("Using automatic zoom")
-##except tk.TclError:  
-##    root.geometry("{0}x{1}+0+0".format(
-##                root.winfo_screenwidth()-pad, root.winfo_screenheight()-pad))
 
-
-
-
-
-##root.overrideredirect(True)
-##root.overrideredirect(False)
 
 root.attributes("-fullscreen", True)
-##root.wm_attributes("-topmost", 1)
-##root.focus_set()
 
 def killing_func():
     root.destroy()
     print("App destroyed")
     destroyed = True
 
-##root.bind('<Escape>', d)
-
-##root.wait_visibility(root)
-##root.attributes('-type', 'normal')
-##root.wm_attributes("-alpha", 0.5)
-
-##def ss():
 mic = Image.open("utils/Google_mic.png")
 mic = mic.resize((58, 80), Image.ANTIALIAS)
 w,h=mic.size
 monitor = {'left': 0, 'top': 0, 'width': root.winfo_screenwidth(), 'height': root.winfo_screenheight()}
-##monitor = {'left': 20, 'top': 20, 'width': 1000, 'height': 500}
 font = ImageFont.truetype("utils/Montserrat-Medium.ttf", size=70)
-##font = ImageFont.load_default()
 spacing_bw_text = 10
 o_w = 0
 
@@ -120,14 +78,6 @@ def bring_to_front():
     im.paste(mic, (past_w, past_h), mic)
     oo = ImageTk.PhotoImage(im)
     root.state('normal')
-    #root.wm_state("zoomed")
-    #root.attributes('-fullscreen', True)
-    #root.overrideredirect(True)
-    #root.overrideredirect(False)
-    #root.attributes('-fullscreen',True)
-    #root.lift()
-    #root.attributes('-topmost', 1)
-    #root.attributes('-topmost', 0)
     root.focus_force()
     root.focus_force()
     root.focus_force()
@@ -140,10 +90,6 @@ def bring_to_front():
         
 
 destroyed = False
-##root.after(50, s)
-##root.after(1000, lambda: root.state('normal'))
-##root.after(3000, root.destroy)
-##threading.Thread(target=s, daemon=True).start()
 ww = root.winfo_screenwidth()
 hh = root.winfo_screenheight()
 image = Image.new("RGB", (ww, hh), "black")
@@ -157,11 +103,4 @@ text_label = canvas.create_text(monitor['width']/2, hh/2+200, text="", font=("Ub
 
 bring_to_front()
 update_text("Initializing")
-##image_label = tk.Label(root, image=oo)
-##image_label.place(x=0, y=0, relwidth=1, relheight=1)
-##text_label = tk.Label(root, text="")
-##text_label.place(anchor="center", relx=0.5, rely=0.75)
-##image_label.pack()
-##tk.Label(root, image=ph).place(anchor="center", relx=0.5, rely=1)
-##root.geometry('200x200')
-##root.focus_force()
+
