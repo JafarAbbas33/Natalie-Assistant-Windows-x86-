@@ -4,7 +4,6 @@ import subprocess
 import logging
 import threading
 
-#os.chdir("/home/jafar33/Desktop/examples/GA with Pico")
 sys.path.insert(0, 'utils')
 sys.path.insert(0, 'my_utils')
 full_text = ''
@@ -480,24 +479,14 @@ def GAss():
 
             global lis, destroyed, btf
             print('Press Esc key to exit\n')
-##            update_text("Welcome")
-##            time.sleep(2)
-##            update_text("Say Natalie to invoke me")
-##            time.sleep(2)
-            #root.overrideredirect(False)
-            #root.state('iconic')
 
             while True:
                 if wait_for_user_trigger:
                     app_terminator.assistant = assistant
                     start_detection(root)
-                    #click.pause(info='Press Enter to send a new request...')
                         
-                #btf = True
-                #root.after(10, s)
                 bring_to_front()
                 continue_conversation = assistant.assist(assistant)
-                #root.overrideredirect(False)
                 root.state('iconic')
                 
                 if continue_conversation == None:
@@ -511,17 +500,6 @@ def GAss():
                 if once and (not continue_conversation):
                     return
     main()
-
-
-
-
-##def entr(event):
-##    if not lis:
-##        root.destroy()
-##        print("App destroyed Because Was Clicked")
-##        destroyed = True
-##
-##root.bind('<Enter>', entr)
 
 
 
