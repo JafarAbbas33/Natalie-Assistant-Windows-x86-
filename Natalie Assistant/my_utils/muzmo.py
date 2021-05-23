@@ -17,28 +17,13 @@ def log(data):
     logging.debug('\n\n\n' + data.encode('unicode-escape').decode('utf-8'))
 
 def get_song_page_url(query='boss bitch'):
-    cookies = {
-        'sid': 'pa1q8lf638bb1nes2tltqni1ro',
-    }
-
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; rv:79.0) Gecko/20100101 Firefox/79.0',
-        'Accept': 'text/html, */*; q=0.01',
-        'Accept-Language': 'en-US,en;q=0.5',
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-        'X-PJAX': 'true',
-        'X-PJAX-Container': '#mcont',
-        'X-Requested-With': 'XMLHttpRequest',
-        'Connection': 'keep-alive',
-        'Referer': 'https://en.muzmo.org/',
-    }
 
     params = (
         ('q', query),
         ('_pjax', '#mcont'),
     )
 
-    response = requests.get('https://en.muzmo.org/search', headers=headers, params=params, cookies=cookies)
+    response = requests.get('https://en.muzmo.org/search', params=params)
 
     while 'Your search request is being processed' in response.text:
         response = requests.get('https://en.muzmo.org/search', headers=headers, params=params, cookies=cookies)
@@ -48,23 +33,11 @@ def get_song_page_url(query='boss bitch'):
     song = soup.find('div', attrs = {'class':'item-song ajax-item'})
     log(song.get_text())
 
-    ##song = soup.find_all('div', attrs = {'class':'item-song ajax-item'})[1]
-    ##print('\n')
-    ##print(song)
-    ##print('\n')
-    ##print(song.find('a', href=True))
-    ##print('\n')
-    ##print(song.find('a', href=True).get_text().strip().replace(' ', '').splitlines())
-    ##print('\n')
-
     song_id = song.find('td', id=True)['id']
-    ##print(song_id)
-
     song_rel_url = song.find('a', href=True)['href']
     song_page_url = domain_url + song_rel_url
 
     song_page_url = domain_url + '/info?id=' + song_id + '&u=1'
-    ##print(song_page_url)
 
     return song_page_url
 
